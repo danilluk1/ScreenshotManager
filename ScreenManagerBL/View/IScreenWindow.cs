@@ -1,6 +1,7 @@
 ﻿using ScreenManagerBL.Presenter;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,5 +14,9 @@ namespace ScreenManagerBL.View
         event MouseEventHandler MouseLeftClick;
         event MouseEventHandler MouseLeftUp;
         event PaintEventHandler PaintRect;
+        event MouseEventHandler FormMouseMove;
+        Color BColor { get; set; }
+        void UpdateForm();
+        void AddControl(Control control);
     }
 }

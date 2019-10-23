@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ScreenManager.cs" />
+    <Compile Include="Model\IScreenManager.cs" />
     <Compile Include="Presenter\BasePresenter.cs" />
     <Compile Include="Presenter\MainFormPresenter.cs" />
+    <Compile Include="Presenter\SaveFormPresenter.cs" />
     <Compile Include="Presenter\ScreenWindowPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IMainView.cs" />

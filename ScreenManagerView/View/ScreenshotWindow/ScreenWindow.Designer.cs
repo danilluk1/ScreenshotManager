@@ -35,8 +35,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 50;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Interval = 150;
             // 
             // ScreenWindow
             // 
@@ -53,12 +52,12 @@
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ScreenWindow_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseUp);
             this.ResumeLayout(false);
 

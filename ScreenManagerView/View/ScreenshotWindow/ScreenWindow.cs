@@ -24,10 +24,12 @@ namespace ScreenManagerView.View.ScreenshotWindow
         }
 
         public ScreenWindowPresenter Presenter { private get; set; }
+        public Color BColor { get => BackColor; set => BackColor = value; }
 
         public event MouseEventHandler MouseLeftClick;
         public event MouseEventHandler MouseLeftUp;
         public event PaintEventHandler PaintRect;
+        public event MouseEventHandler FormMouseMove;
 
         private void ScreenWindow_MouseDown(object sender, MouseEventArgs e)
         {
@@ -47,9 +49,9 @@ namespace ScreenManagerView.View.ScreenshotWindow
                     break;
             }
         }
-        private void ScreenWindow_Paint(object sender, PaintEventArgs e)
+        private void ScreenWindow_MouseMove(object sender, MouseEventArgs e)
         {
-            PaintRect?.Invoke(this, e);
+            FormMouseMove?.Invoke(this, e);
         }
         public void Down()
         {
@@ -60,10 +62,19 @@ namespace ScreenManagerView.View.ScreenshotWindow
         {
             this.Show();
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        public void UpdateForm()
         {
-            Refresh();
+            this.Refresh();
+        }
+
+        public void AddControl(Control control)
+        {
+            Controls.Add(control);
+        }
+
+        private void ScreenWindow_Paint(object sender, PaintEventArgs e)
+        {
+            PaintRect.Invoke(this, e);
         }
     }
 }

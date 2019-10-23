@@ -14,7 +14,7 @@ namespace ScreenManagerView
         /// </summary>
         [STAThread]
         static void Main()
-        {
+      {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new MainForm();
