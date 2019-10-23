@@ -66,15 +66,15 @@ namespace ScreenManagerView
                     {
                         Width = width,
                         Height = heigth,
-                    }, this, new ScreenManager(Modes.PartScreen));
+                    }, this, Modes.PartScreen);
                 }
-                else if (modeComboBox.SelectedItem.ToString().Equals("Экран"))
+                if (modeComboBox.SelectedItem.ToString().Equals("Экран"))
                 {
                     var presenter = new ScreenWindowPresenter(new ScreenWindow()
                     {
                         Width = width,
                         Height = heigth,
-                    }, this, new ScreenManager(Modes.FullScreen));
+                    }, this, Modes.FullScreen);
                 }
                 if (modeComboBox.SelectedItem.ToString().Equals("Окно"))
                 {
@@ -96,11 +96,11 @@ namespace ScreenManagerView
         {
             var w = Width;
             var h = Height;
-            if (imageBox.Width != Width - 20)
+            if (imageBox.Width != w - 15)
             {
                 Width = Screen.PrimaryScreen.Bounds.Width / 2;
                 Height = Screen.PrimaryScreen.Bounds.Height / 2;
-                imageBox.Width = Width - 20;
+                imageBox.Width = Width - 15;
                 imageBox.Height = Height - 45;
 
             }

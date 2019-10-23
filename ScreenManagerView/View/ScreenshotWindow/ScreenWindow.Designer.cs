@@ -55,6 +55,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Black;
+            this.Load += new System.EventHandler(this.ScreenWindow_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ScreenWindow_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseMove);

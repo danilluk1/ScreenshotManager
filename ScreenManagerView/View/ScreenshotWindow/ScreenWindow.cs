@@ -1,4 +1,6 @@
 ﻿using MetroFramework.Forms;
+using ScreenManagerBL.Core;
+using ScreenManagerBL.Model.ScreenStrategy;
 using ScreenManagerBL.Presenter;
 using ScreenManagerBL.View;
 using System;
@@ -18,11 +20,12 @@ namespace ScreenManagerView.View.ScreenshotWindow
         public ScreenWindow()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint |
-                                                                        ControlStyles.UserPaint, true);
-            UpdateStyles();
+            
+            SetStyle(ControlStyles.OptimizedDoubleBuffer
+                | ControlStyles.AllPaintingInWmPaint
+                | ControlStyles.UserPaint, true);
+            UpdateStyles();         
         }
-
         public ScreenWindowPresenter Presenter { private get; set; }
         public Color BColor { get => BackColor; set => BackColor = value; }
 
@@ -30,6 +33,7 @@ namespace ScreenManagerView.View.ScreenshotWindow
         public event MouseEventHandler MouseLeftUp;
         public event PaintEventHandler PaintRect;
         public event MouseEventHandler FormMouseMove;
+        public event EventHandler FormLoad;
 
         private void ScreenWindow_MouseDown(object sender, MouseEventArgs e)
         {
@@ -53,6 +57,9 @@ namespace ScreenManagerView.View.ScreenshotWindow
         {
             FormMouseMove?.Invoke(this, e);
         }
+        private void ScreenWindow_Paint(object sender, PaintEventArgs e)
+        {
+        }
         public void Down()
         {
             this.Close();
@@ -72,9 +79,9 @@ namespace ScreenManagerView.View.ScreenshotWindow
             Controls.Add(control);
         }
 
-        private void ScreenWindow_Paint(object sender, PaintEventArgs e)
+        private void ScreenWindow_Load(object sender, EventArgs e)
         {
-            PaintRect.Invoke(this, e);
+
         }
     }
 }

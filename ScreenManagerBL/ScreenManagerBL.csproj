@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Model\ScreenManager.cs" />
     <Compile Include="Model\IScreenManager.cs" />
+    <Compile Include="Model\ScreenStrategy\FullScreenStrategy.cs" />
+    <Compile Include="Model\ScreenStrategy\IScreenStrategy.cs" />
+    <Compile Include="Model\ScreenStrategy\PartScreenStrategy.cs" />
     <Compile Include="Presenter\BasePresenter.cs" />
     <Compile Include="Presenter\MainFormPresenter.cs" />
     <Compile Include="Presenter\SaveFormPresenter.cs" />
