@@ -43,20 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ScreenManager.cs" />
-    <Compile Include="Model\IScreenManager.cs" />
+    <Compile Include="Model\SaveStrategy\FolderStrategy.cs" />
+    <Compile Include="Model\SaveStrategy\ISaveStrategy.cs" />
+    <Compile Include="Model\SaveStrategy\SaveContext.cs" />
+    <Compile Include="Model\ScreenManager\ScreenManager.cs" />
+    <Compile Include="Model\ScreenManager\IScreenManager.cs" />
     <Compile Include="Model\ScreenStrategy\FullScreenStrategy.cs" />
     <Compile Include="Model\ScreenStrategy\IScreenStrategy.cs" />
     <Compile Include="Model\ScreenStrategy\PartScreenStrategy.cs" />
+    <Compile Include="Model\ScreenStrategy\WindowStrategy.cs" />
     <Compile Include="Presenter\BasePresenter.cs" />
     <Compile Include="Presenter\MainFormPresenter.cs" />
     <Compile Include="Presenter\SaveFormPresenter.cs" />
     <Compile Include="Presenter\ScreenWindowPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IMainView.cs" />
+    <Compile Include="View\ISaveView.cs" />
     <Compile Include="View\IScreenWindow.cs" />
     <Compile Include="View\IView.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

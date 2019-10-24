@@ -28,14 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 150;
             // 
             // ScreenWindow
             // 
@@ -55,8 +48,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Black;
-            this.Load += new System.EventHandler(this.ScreenWindow_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ScreenWindow_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ScreenWindow_MouseUp);
@@ -65,7 +56,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
     }
 }

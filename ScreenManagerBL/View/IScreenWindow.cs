@@ -13,9 +13,7 @@ namespace ScreenManagerBL.View
     {
         event MouseEventHandler MouseLeftClick;
         event MouseEventHandler MouseLeftUp;
-        event PaintEventHandler PaintRect;
         event MouseEventHandler FormMouseMove;
-        event EventHandler FormLoad;
         Color BColor { get; set; }
         void UpdateForm();
         void AddControl(Control control);

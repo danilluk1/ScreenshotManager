@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenManagerBL.Model.ScreenStrategy;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,9 +11,8 @@ namespace ScreenManagerBL.Core
 {
     public interface IScreenManager
     {
-        Bitmap MakeScreen(Screen scr);
-        Bitmap MakeScreen(PictureBox panel);
-        Bitmap MakeScreen();
+        Bitmap Image { get; set; }
+        Bitmap DoScr(IScreenStrategy strat, int w, int h, int x, int y);
         Modes Mode { get; set; }
     }
 }

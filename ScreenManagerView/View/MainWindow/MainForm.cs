@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using ScreenManagerBL.Core;
+using ScreenManagerBL.Model.SaveStrategy;
 using ScreenManagerBL.Presenter;
 using ScreenManagerBL.View;
+using ScreenManagerView.View.SaveForm;
 using ScreenManagerView.View.ScreenshotWindow;
 
 namespace ScreenManagerView
@@ -22,28 +24,23 @@ namespace ScreenManagerView
         {
             InitializeComponent();
         }
-
         public MainFormPresenter Presenter { private get; set; }
-        public Image Screenshot { get => imageBox.BackgroundImage; set => imageBox.BackgroundImage = value; }
+        public Bitmap Screenshot { get => (Bitmap)imageBox.BackgroundImage; set => imageBox.BackgroundImage = value; }
 
         public event EventHandler NewScrClick;
         public event EventHandler PreShowClick;
-
         public void Down()
         {
             this.Close();
         }
-
         public void MakeInvisible()
         {
             Visible = false;
         }
-
         public void MakeVisible()
         {
             Visible = true;
         }
-
         public void Open()
         {
             this.Show();
@@ -88,7 +85,7 @@ namespace ScreenManagerView
         {
             if (imageBox.BackgroundImage != null)
             {
-                imageBox.BackgroundImage.Save("image", ImageFormat.Png);
+                var presenter = new SaveFormPresenter(new SaveForm(), new SaveContext(new FolderStrategy(Screenshot)));
             }
         }
 

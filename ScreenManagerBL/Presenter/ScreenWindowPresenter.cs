@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using ScreenManagerBL.Core;
 using ScreenManagerBL.Model.ScreenStrategy;
+using ScreenManagerBL.Model.SaveStrategy;
 
 namespace ScreenManagerBL.Presenter
 {
@@ -11,7 +12,7 @@ namespace ScreenManagerBL.Presenter
     {
         private IScreenWindow view;
         private IMainWindow menuView;
-        private IScreenStrategy strategy;
+        private IScreenManager manager;
         private readonly Screen scr = Screen.PrimaryScreen;
         private static int startX = 0;
         private static int startY = 0;
@@ -26,30 +27,24 @@ namespace ScreenManagerBL.Presenter
             view.MouseLeftClick += View_MouseLeftClick;
             view.MouseLeftUp += View_MouseLeftUp;
             view.FormMouseMove += View_FormMouseMove;
-            view.FormLoad += View_FormLoad;
             view.Open();
+            manager = new ScreenManager();
             switch (mode)
             {
-                case Modes.FullScreen:
-                    strategy = new FullScreenStrategy();
+                case Modes.FullScreen:                   
                     view.BColor = Color.Black;
                     menuView.MakeInvisible();
                     Bitmap b = null;
-                    b = strategy.MakeScreen(scr.Bounds.Width, scr.Bounds.Height, 0, 0);
+                    b = manager.DoScr(new FullScreenStrategy(),scr.Bounds.Width, scr.Bounds.Height, 0, 0);
                     menuView.Screenshot = b;
+                    manager.Image = b;
                     menuView.MakeVisible();
                     view.Down();
                     break;
                 case Modes.PartScreen:
-                    strategy = new PartScreenStrategy();
                     break;
             }
         }
-
-        private void View_FormLoad(object sender, System.EventArgs e)
-        {
-        }
-
         private void View_FormMouseMove(object sender, MouseEventArgs e)
         {
             if (IsLeftButtonPressed)
@@ -95,12 +90,11 @@ namespace ScreenManagerBL.Presenter
             imageBox.BackColor = Color.Transparent;
             view.BColor = Color.Black;
             Bitmap b = null;
-            b = strategy.MakeScreen(imageBox.Width, imageBox.Height, imageBox.Left, imageBox.Top);
+            b = manager.DoScr(new PartScreenStrategy(), imageBox.Width, imageBox.Height, imageBox.Left, imageBox.Top);
             menuView.Screenshot = b;
             view.Down();
             menuView.MakeVisible();
         }
-
         private void View_MouseLeftClick(object sender, MouseEventArgs e)
         {
             IsLeftButtonPressed = true;

@@ -31,9 +31,7 @@ namespace ScreenManagerView.View.ScreenshotWindow
 
         public event MouseEventHandler MouseLeftClick;
         public event MouseEventHandler MouseLeftUp;
-        public event PaintEventHandler PaintRect;
         public event MouseEventHandler FormMouseMove;
-        public event EventHandler FormLoad;
 
         private void ScreenWindow_MouseDown(object sender, MouseEventArgs e)
         {
@@ -57,9 +55,6 @@ namespace ScreenManagerView.View.ScreenshotWindow
         {
             FormMouseMove?.Invoke(this, e);
         }
-        private void ScreenWindow_Paint(object sender, PaintEventArgs e)
-        {
-        }
         public void Down()
         {
             this.Close();
@@ -77,11 +72,6 @@ namespace ScreenManagerView.View.ScreenshotWindow
         public void AddControl(Control control)
         {
             Controls.Add(control);
-        }
-
-        private void ScreenWindow_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

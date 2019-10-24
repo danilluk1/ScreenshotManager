@@ -1,4 +1,5 @@
-﻿using ScreenManagerBL.Presenter;
+﻿using ScreenManagerBL.Model.SaveStrategy;
+using ScreenManagerBL.Presenter;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,7 @@ namespace ScreenManagerBL.View
     {
         event EventHandler NewScrClick;
         event EventHandler PreShowClick;
-        Image Screenshot { get; set; }
+        Bitmap Screenshot { get; set; }
         void MakeInvisible();
         void MakeVisible();
     }
