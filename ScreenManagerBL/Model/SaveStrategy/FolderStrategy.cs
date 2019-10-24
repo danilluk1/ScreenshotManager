@@ -22,9 +22,15 @@ namespace ScreenManagerBL.Model.SaveStrategy
 
         public void Save()
         {
+            SaveFileDialog sfd = new SaveFileDialog();
             try
             {
-                Image.Save(FileName, SaveFormat);
+                sfd.DefaultExt = SaveFormat.ToString().ToLower();
+                sfd.FileName = "Снимок";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    Image.Save(sfd.FileName, SaveFormat);
+                }
             }
             catch (System.Runtime.InteropServices.ExternalException)
             {

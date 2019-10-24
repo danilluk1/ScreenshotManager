@@ -46,7 +46,7 @@ namespace ScreenManagerBL.Presenter
         {
             var dia = new FolderBrowserDialog();
             if(dia.ShowDialog() == DialogResult.OK)
-            {
+            {               
                 var res = dia.SelectedPath;
                 Context.ContextStrategy.FileName = res;
                 View.PathText = res;
