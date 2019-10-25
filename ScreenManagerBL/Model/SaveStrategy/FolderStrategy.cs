@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenManagerBL.Model.SaveStrategy
@@ -16,26 +11,27 @@ namespace ScreenManagerBL.Model.SaveStrategy
         {
             Image = img ?? throw new ArgumentNullException(nameof(img));
         }
+
         public Bitmap Image { get; set; }
-        public ImageFormat SaveFormat { get; set; }
-        public string FileName { get; set; }
 
         public void Save()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             try
             {
-                sfd.DefaultExt = SaveFormat.ToString().ToLower();
+                sfd.Filter = "Joint Photographic Experts Group .jpg|*.jpg;|Portable Network Graphics .png| *.png |Bitmap Picture .bmp| *.bmp";
                 sfd.FileName = "Снимок";
+                sfd.Title = "Сохрание";
+                sfd.InitialDirectory = "Images";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    Image.Save(sfd.FileName, SaveFormat);
+                    Image.Save(sfd.FileName);
                 }
             }
             catch (System.Runtime.InteropServices.ExternalException)
             {
                 MessageBox.Show("Не удалось сохранить файл!");
-                File.Delete(FileName);
+                File.Delete(sfd.FileName);
             }
         }
     }

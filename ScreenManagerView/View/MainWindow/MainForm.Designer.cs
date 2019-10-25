@@ -55,6 +55,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Enabled = false;
             this.saveButton.Location = new System.Drawing.Point(153, 1);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(69, 29);
@@ -142,6 +143,7 @@
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.Flat;
             this.ShowIcon = false;
             this.Style = MetroFramework.MetroColorStyle.Black;
+            this.TopMost = true;
             this.backPanel.ResumeLayout(false);
             this.backPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();

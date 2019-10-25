@@ -1,50 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MetroFramework.Forms;
+﻿using MetroFramework.Forms;
 using ScreenManagerBL.Core;
 using ScreenManagerBL.Model.SaveStrategy;
 using ScreenManagerBL.Presenter;
 using ScreenManagerBL.View;
-using ScreenManagerView.View.SaveForm;
 using ScreenManagerView.View.ScreenshotWindow;
+using ScreenManagerView.View.ScreenShower;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ScreenManagerView
 {
     public partial class MainForm : MetroForm, IMainWindow
     {
+        private SaveContext context;
+
         public MainForm()
         {
             InitializeComponent();
         }
-        public MainFormPresenter Presenter { private get; set; }
-        public Bitmap Screenshot { get => (Bitmap)imageBox.BackgroundImage; set => imageBox.BackgroundImage = value; }
 
-        public event EventHandler NewScrClick;
-        public event EventHandler PreShowClick;
+        public MainFormPresenter Presenter { private get; set; }
+        public Bitmap Screenshot { get; set; }
+
         public void Down()
         {
             this.Close();
         }
+
         public void MakeInvisible()
         {
             Visible = false;
         }
+
         public void MakeVisible()
         {
             Visible = true;
+            if (Screenshot != null)
+            {
+                saveButton.Enabled = true;
+            }
         }
+
         public void Open()
         {
             this.Show();
         }
+
         private void screenButton_Click(object sender, EventArgs e)
         {
             try
@@ -75,7 +77,6 @@ namespace ScreenManagerView
                 }
                 if (modeComboBox.SelectedItem.ToString().Equals("Окно"))
                 {
-
                 }
             }
             catch (NullReferenceException) { }
@@ -83,32 +84,14 @@ namespace ScreenManagerView
 
         private void saveButton_Click_1(object sender, EventArgs e)
         {
-            if (imageBox.BackgroundImage != null)
-            {
-                var presenter = new SaveFormPresenter(new SaveForm(), new SaveContext(new FolderStrategy(Screenshot)));
-            }
+            context = new SaveContext(new FolderStrategy(Screenshot));
+            context.DoSave();
         }
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            var w = Width;
-            var h = Height;
-            if (imageBox.Width != w - 15)
-            {
-                Width = Screen.PrimaryScreen.Bounds.Width / 2;
-                Height = Screen.PrimaryScreen.Bounds.Height / 2;
-                imageBox.Width = Width - 15;
-                imageBox.Height = Height - 45;
-
-            }
-            else
-            {
-                Width = 400;
-                Height = 150;
-                imageBox.Width = 0;
-                imageBox.Height = 0;
-            }
-
+            var shower = new ScreenShower(Screenshot);
+            shower.Show();
         }
 
         private void themeSwitcher_CheckedChanged(object sender, EventArgs e)

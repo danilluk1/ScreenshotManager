@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ScreenManagerBL.Model.ScreenStrategy
 {
-    class WindowStrategy : IScreenStrategy
+    internal class WindowStrategy : IScreenStrategy
     {
         public Bitmap MakeScreen(int width, int height, int x, int y)
         {

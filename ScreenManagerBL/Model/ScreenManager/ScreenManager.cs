@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ScreenManagerBL.Model.ScreenStrategy;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ScreenManagerBL.Model.ScreenStrategy;
 
 namespace ScreenManagerBL.Core
 {
@@ -16,15 +9,10 @@ namespace ScreenManagerBL.Core
         PartScreen,
         Window
     }
+
     public class ScreenManager : IScreenManager
     {
-        public ScreenManager()
-        {
-            
-        }
-
         public Modes Mode { get; set; }
-        public Bitmap Image { get; set; }
 
         public Bitmap DoScr(IScreenStrategy strat, int w, int h, int x, int y)
         {

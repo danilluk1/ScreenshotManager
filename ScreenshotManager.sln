@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenManagerBL", "ScreenMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenManagerView", "ScreenManagerView\ScreenManagerView.csproj", "{4BC2B683-DBF6-4768-B96B-E245309C4A9A}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ScreenManagerInstaller", "ScreenManagerInstaller\ScreenManagerInstaller.vdproj", "{424D40FE-D721-4AE4-BAC9-EE7D1ED96F07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{4BC2B683-DBF6-4768-B96B-E245309C4A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC2B683-DBF6-4768-B96B-E245309C4A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC2B683-DBF6-4768-B96B-E245309C4A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424D40FE-D721-4AE4-BAC9-EE7D1ED96F07}.Debug|Any CPU.ActiveCfg = Debug
+		{424D40FE-D721-4AE4-BAC9-EE7D1ED96F07}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
